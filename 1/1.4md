@@ -1,0 +1,7 @@
+```lisp
+(define (a-plus-abs-b a b)
+    ((if (> b 0) + -) a b)
+)
+(a-plus-abs-b 5 -6)
+```
+* It uses a combination for deciding which operator to apply. If the second argument (`b`) is greater than 0 it uses `+`, otherwise it uses the `-` in order to change sing for `b`.
