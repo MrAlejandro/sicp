@@ -1,0 +1,25 @@
+```
+(gcd 206 40)
+(gcd 40 (reminder 206 40))
+	--> (if (= (reminder 206 40) 0)) - 1
+(gcd (reminder 206 40) (reminder 40 (reminder 206 40)))
+	--> (if (= (reminder 40 (reminder 206 40)) 0)) - 2
+(gcd (reminder 40 (reminder 206 40)) (reminder (reminder 206 40) (reminder 40 (reminder 206 40))))
+	--> (if (= (reminder (reminder 206 40) (reminder 40 (reminder 206 40))))) - 4
+(gcd (reminder (reminder 206 40) (reminder 40 (reminder 206 40)))) (reminder (reminder 40 (reminder 206 40)) (reminder (reminder 206 40) (reminder 40 (reminder 206 40))))))
+	--> (if (= (reminder (reminder 40 (reminder 206 40)) (reminder (reminder 206 40) (reminder 40 (reminder 206 40))))) 0)) - 7
+
+
+
+
+
+(reminder 206 40) = 6
+(reminder 40 (reminder 206 40)) = 4
+(reminder (reminder 206 40) (reminder 40 (reminder 206 40)))) = 2
+(reminder (reminder 40 (reminder 206 40)) (reminder (reminder 206 40) (reminder 40 (reminder 206 40)))) = 0
+
+
+(reminder (reminder 206 40) (reminder 40 (reminder 206 40)))) - 4
+```
+
+When using applicative order the `reminder` evaluates 14 (when checking the if condition) and 4 times when calculating the returned result
