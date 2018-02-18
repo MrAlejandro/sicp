@@ -1,0 +1,10 @@
+(define (reverse lst)
+    (define (iter result lst)
+        (if (null? lst)
+            result
+            (iter (append (list (car lst)) result) (cdr lst))
+        )
+    )
+    (iter (list) lst)
+)
+(reverse (list 1 4 9 16 25))
