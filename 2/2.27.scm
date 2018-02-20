@@ -1,0 +1,12 @@
+(define (deep-reverse lst)
+    (define (iter result lst)
+        (cond
+            ((null? lst) result)
+            ((pair? (car lst)) (iter (append (list (iter '() (car lst))) result) (cdr lst)))
+            (else (iter (append (list (car lst)) result) (cdr lst)))
+        )
+    )
+    (iter (list) lst)
+)
+(define x (list (list 1 2) (list 3 4)))
+(deep-reverse x)
