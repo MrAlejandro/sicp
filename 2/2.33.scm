@@ -31,16 +31,7 @@
 (newline)
 
 (define (length sequence)
-    (accumulate 
-        (lambda (x y)
-            (if (null? x)
-                (+ 0 y)
-                (+ 1 y)
-            )
-        )
-        0
-        sequence
-    )
+    (accumulate (lambda (x y) (+ 1 y)) 0 sequence)
 )
 
 (display (length (list 1 2 3 4 (list 5 6))))
