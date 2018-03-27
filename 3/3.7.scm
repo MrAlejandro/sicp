@@ -15,11 +15,11 @@
     (define (dispatch orig-pass)
         (lambda (pass m)
             (cond
-                ((not (eq? pass password)) (lambda (arg) "Wrong password"))
+                ((not (eq? pass orig-pass)) (lambda (arg) "Wrong password"))
                 ((eq? m 'make-joint) make-joint)
                 ((eq? m 'withdraw) withdraw)
                 ((eq? m 'deposit) deposit)
-                (else (lambda (arg) (display "Unknown call") (newline)))
+                (else (lambda (arg) "Unknown call"))
             )
         )
     )
@@ -32,10 +32,9 @@
 
 (define (make-joint account orig-pass new-pass)
     ((account orig-pass 'make-joint) new-pass)
-    account
 )
 
-(define paul-acc (make-joint peter-acc 'say-and-pass 'my-new-pass))
+(define paul-acc (make-joint peter-acc 'say-and-pass 'test))
 
-(display ((paul-acc 'say-and-pass 'withdraw) 40))
+(display ((paul-acc 'test 'withdraw) 40))
 (newline)
