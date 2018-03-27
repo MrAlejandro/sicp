@@ -1,0 +1,25 @@
+(define (make-monitored proc)
+    (let
+        ((cnt 0))
+        (lambda (arg)
+            (cond 
+                ((eq? arg 'how-many-calls?) cnt)
+                ((eq? arg 'reset-count) (set! cnt 0))
+                (else (begin (set! cnt (+ cnt 1)) (proc arg)))
+            )
+        )
+    )
+)
+
+(define s (make-monitored sqrt))
+
+(display (s 100))
+(newline)
+(s 'how-many-calls?)
+(display (s 9))
+(newline)
+(s 'how-many-calls?)
+(s 'reset-count)
+(display (s 100))
+(newline)
+(s 'how-many-calls?)
